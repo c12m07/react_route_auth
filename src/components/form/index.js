@@ -2,7 +2,6 @@ import { useContext, useState } from 'react';
 import FormContext from '../../context/FormContext';
 import { useNavigate } from 'react-router-dom';
 import Input from './Input'
-import ProtectedRoute from '../ProtectedRoute';
 
 const Form = () => {
 
@@ -12,8 +11,8 @@ const Form = () => {
   const [contra2, setContra2] = useState({campo: '', valido: null});
 	const navigate = useNavigate();
 	const context = useContext(FormContext);
-	const { validForm } = context;
-	const [formValidate, setFormValidate] = validForm;
+	const { logIn } = context;
+	const [loggedIn, setLoggedIn] = logIn;
 
   const expresions = {
 		user: /^[a-zA-Z0-9_-]{4,16}$/,
@@ -44,10 +43,8 @@ const Form = () => {
 			contra.valido === 'true' && 
 			contra2.valido === 'true' 
 		) {
-			setFormValidate(true);
-			console.log('entra');
-			console.log(formValidate);
-			formValidate === true ? <ProtectedRoute /> : <Form />
+			setLoggedIn(true);
+			navigate("/registered");
 		} else {
 			alert('Rellenar el formulario correctamente')
 		}

@@ -1,4 +1,4 @@
-// import { Link } from "wouter";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -6,9 +6,9 @@ const Home = () => {
       <h1 className="HomeTitle">BIENVENIDO!</h1>
       <p>¿ Deseas crear un usuario ?</p>
       <br />
-      {/* <Link href="/form"> */}
-        <a className="Btn">Crear Usuario</a>
-      {/* </Link> */}
+      <Link to="/form" className="Btn">
+        Crear Usuario
+      </Link>
     </div>
   );
 };

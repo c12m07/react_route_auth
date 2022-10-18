@@ -1,15 +1,15 @@
-// import { Link } from "wouter";
+import { Link } from "react-router-dom";
 
 const Registered = () => {
-  return(
+  return (
     <div>
       <h1 className="RegisteredTitle">Usuario registrado correctamente!</h1>
 
-      {/* <Link href="/"> */}
-        <a className="Btn">Volver al inicio</a>
-      {/* </Link> */}
+      <Link to="/" className="Btn">
+        Volver al inicio
+      </Link>
     </div>
   );
-}
+};
 
 export default Registered;

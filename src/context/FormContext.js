@@ -1,7 +1,7 @@
 import { createContext } from "react";
 
 const FormContext = createContext({
-  validForm: [null, () => {}]
+  logIn: [null, () => {}]
 })
 
 export default FormContext
