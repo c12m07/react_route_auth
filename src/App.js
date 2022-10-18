@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import FormContext from "./context/FormContext";
+import Home from "./components/Home";
+import Form from "./components/form";
+import Registered from "./components/registered";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
+  const [form, setForm] = useState(null);
+
+  const validationForm = {
+    validForm: [form, setForm],
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <FormContext.Provider value={validationForm}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/form" element={<Form />} />
+
+            <Route element={<ProtectedRoute />}>
+              <Route path="/registered" element={<Registered />} />
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </FormContext.Provider>
     </div>
   );
 }
